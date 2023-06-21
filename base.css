@@ -1,4 +1,71 @@
-div {
-  color: orange; }
+@import url(/node_modules/normalize-css/normalize.css);
+.bookshop-container {
+  height: 2305px;
+  width: 100%;
+  background-color: #fff; }
+
+.header-container {
+  width: 100%;
+  height: 116px;
+  background-color: aqua; }
+
+.header-elements {
+  width: 78%;
+  height: 40px;
+  background-color: antiquewhite;
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between; }
+
+.bookshop-title {
+  height: 29px;
+  width: 11.4%;
+  background-color: red;
+  margin-top: -10px; }
+  .bookshop-title h1 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px; }
+
+.header-menu {
+  width: 33.3%;
+  height: 12px;
+  background-color: red;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: #5C6A79; }
+
+.header-menu-links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between; }
+
+.header-icons {
+  display: flex;
+  width: 11%;
+  height: 17px;
+  background-color: red;
+  justify-content: space-between; }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + .content {
+  padding-top: 102px; }
 
 /*# sourceMappingURL=base.css.map */
