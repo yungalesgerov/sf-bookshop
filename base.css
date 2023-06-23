@@ -153,6 +153,9 @@
   .slider-dots-item:hover circle {
     fill: #9E98DC; }
 
+.dot-active circle {
+  fill: #9E98DC; }
+
 .books-categories {
   width: 29%;
   height: 710px;

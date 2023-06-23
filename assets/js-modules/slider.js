@@ -3,42 +3,45 @@ let slider = document.querySelector('.slider-wrapper');
 let dot1 = document.querySelector('.svg-dot-1');
 let dot2 = document.querySelector('.svg-dot-2');
 let dot3 = document.querySelector('.svg-dot-3');
+let dots = document.querySelectorAll('.slider-dots-item');
 
 const entities = [
     {
         // img: './dist/6f345790f612312eca2e.jpg'
-        img: 'dist\6f345790f612312eca2e.jpg'
+        img: 'http://localhost:3000/6f345790f612312eca2e.jpg'
     }, {
         // img: './dist/037f848a9334184fbe61.jpg'
-        img: 'assets\icons\banner2.jpg'
+        img: 'http://localhost:3000/037f848a9334184fbe61.jpg'
     }, {
         // img: './dist/cc7860b31a3ba793be84.jpg'
-        img: 'assets\icons\banner3.jpg'
+        // img: 'assets\icons\banner3.jpg'
+        img: 'http://localhost:3000/cc7860b31a3ba793be84.jpg'
     }
 ];
 let currentIndex = 0;
 const setEntity = (index) => {
     slider.style.backgroundImage = `url(${entities[index].img})`;
 };
+setEntity(currentIndex);
 
-
-
-
-
-dot1.addEventListener('click',() => {
-    console.log('0');
-    setEntity(0);
-    return currentIndex = 0;
-});
-dot2.addEventListener('click',() => {
-    console.log('1');
-    setEntity(1);
-    return currentIndex = 1;
-});
-dot3.addEventListener('click',() => {
-    console.log("2");
-    setEntity(2);
-    return currentIndex = 2;
+function markDot(index) {
+    dots.forEach(a => a.classList.remove('dot-active'));
+    dots[index].classList.add('dot-active');
+};
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        setEntity(currentIndex);
+        markDot(currentIndex);
+    });
 });
 
-// slider.style.backgroundImage = 'url(\banner3.jpg)';
+setInterval(() => {
+    if(currentIndex == entities.length-1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    }
+    setEntity(currentIndex);
+    markDot(currentIndex);
+},5000);
