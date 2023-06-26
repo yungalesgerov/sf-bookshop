@@ -590,4 +590,21 @@ $main-shadow: 0px 24px 36px rgba(53, 49, 84, 0.28);
         margin-top: 1240px;
         margin-left: 40%;
     }
+    .slider-promo1 div, .slider-promo2 div {
+        font-size: 10px;
+        // padding: 0;
+        padding-top: 70px;
+        padding-left: 10%;
+    }
+    .slider-promo1 svg, .slider-promo2 svg {
+        width: 80%;
+        padding-left: 10%;
+
+    }
+}
+@media screen and (max-width: 1184px) {
+    .button_load-more-button {
+        margin-top: 1240px;
+        margin-left: 47%;
+    }
 }
