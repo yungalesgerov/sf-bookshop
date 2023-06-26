@@ -198,6 +198,7 @@ function checkBooksOnPage() {
 for (let n = 0; n < CATEGORY_LI_ITEMS.length; n++) {
     CATEGORY_LI_ITEMS[n].addEventListener('click', () => {
         createBooksOnPage(BOOK_CATEGORIES[n], n);
+        // BTN_MORE_BOOKS.style.marginTop = '96px';
     });
 }
 
@@ -214,6 +215,7 @@ async function addMoreBooksOnPage() {
 
 BTN_MORE_BOOKS.addEventListener('click', () => {
     addMoreBooksOnPage();
+    BTN_MORE_BOOKS.style.marginTop += '1210px';
 });
 
 createBooksOnPage(BOOK_CATEGORIES[0], 0);

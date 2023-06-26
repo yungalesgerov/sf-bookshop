@@ -1,4 +1,4 @@
-// window.onscroll = function () { myFunction() };
+window.onscroll = function () { myFunction() };
 const header = document.querySelector('.header-container');
 const sticky = header.offsetTop;
 function myFunction() {

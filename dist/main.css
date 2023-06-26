@@ -538,6 +538,12 @@ table {
   .slider-promo1 svg {
     padding-left: 10%; }
 
+.slider-promo1:hover {
+  transform: scale(1.1); }
+
+.slider-promo2:hover {
+  transform: scale(1.1); }
+
 .slider-promo2 {
   width: 9.7%;
   height: 273px;
@@ -623,6 +629,9 @@ table {
   font-size: 12px;
   line-height: 15px;
   cursor: pointer; }
+
+.main-content__navigation-list-item:hover {
+  transform: scale(1.1); }
 
 .main-content__navigation-list-item:last-child {
   margin-bottom: 0px; }
@@ -770,6 +779,12 @@ table {
 .button_load-more-button {
   margin-left: 54.4%;
   margin-top: 96px; }
+
+.button:hover {
+  transform: scale(1.1); }
+
+.button_load-more-button:hover {
+  transform: scale(1.1); }
 
 .header__shoping-cart-quantity-text {
   margin-left: 3px;
