@@ -73,13 +73,22 @@ $main-shadow: 0px 24px 36px rgba(53, 49, 84, 0.28);
     margin: 0;
     padding: 0;
     justify-content: space-between;
+    // text-decoration: none;
     li {
         cursor: $main-cursor;
+        a {
+            text-decoration: none;
+            color: #5C6A79;
+        }
+        a:hover {
+            @extend %active-element;
+        }
         
     }
     li:hover {
         transform: scale(1.1);
-        @extend %active-element;
+        
+
     }
 }
 .header-icons {
@@ -490,20 +499,19 @@ $main-shadow: 0px 24px 36px rgba(53, 49, 84, 0.28);
     .bookshop-container {
         height: 100%;
     }
+    
     .header-menu-links {
-        font-size: 7px;
+        font-size: 6px;
+        justify-content: space-between;
+        li {
+            padding-right: 4px;
+        }
+        // word-wrap: break-word;
     }
     
     .bookshop-title h1{
         font-size: 20px;
     }
-    .header-icons svg {
-        width: 100%;
-    }
-    .header-icons-bag svg {
-        width: 60%;
-    }
-
     .main-content__book-catalog {
     display: inline;        
     }
@@ -512,12 +520,7 @@ $main-shadow: 0px 24px 36px rgba(53, 49, 84, 0.28);
         img {
             width: 120px;
         }
-        // .main-content__book-info {
-        //     width: 120px;
-        // }
-        // .main-content__book-author {
-        //     width: 100%;
-        // }
+        
         div {
             width: 120px;
         }
@@ -600,6 +603,13 @@ $main-shadow: 0px 24px 36px rgba(53, 49, 84, 0.28);
         width: 80%;
         padding-left: 10%;
 
+    }
+    .header-menu {
+        font-size: 8px;
+        li {
+            padding-right: 4px;
+        }
+        // word-wrap: break-word;
     }
 }
 @media screen and (max-width: 1184px) {

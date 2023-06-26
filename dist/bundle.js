@@ -1,1 +1,380 @@
-(()=>{var t={204:()=>{function t(t,e,o,n,s,a,i){const c=document.createElement("div");c.classList.add("main-content__book-card");const r=document.createElement("img");r.classList.add("main-content__book-cover"),0==e?r.setAttribute("src","/img/example-cover.png"):r.setAttribute("src",e),r.setAttribute("alt","book cover");const l=document.createElement("div");l.classList.add("main-content__book-info");const u=document.createElement("p");u.classList.add("main-content__book-author"),u.textContent=t;const d=document.createElement("p");d.classList.add("main-content__book-name"),d.textContent=o;const m=document.createElement("div");if(null!=n){m.classList.add("main-content__book-rating");for(let t=0;t<5;t++){let e=Math.floor(n),o=document.createElement("span");o.classList.add("main-content__book-rating-star"),o.textContent="★",e-1>=t&&o.classList.add("main-content__book-rating-star_active"),m.append(o)}const t=document.createElement("span");t.classList.add("main-content__book-reviews"),t.textContent=`${s} review`,m.append(t)}const g=document.createElement("p");g.classList.add("main-content__book-description"),g.textContent=a;const b=document.createElement("p");b.classList.add("main-content__book-price"),b.textContent=i;const p=document.createElement("button");p.classList.add("button","button_buy-button","button_buy-button-active"),p.textContent="buy now",l.append(u,d,m,g,b,p),c.append(r,l),document.querySelector(".main-content__book-catalog").append(c)}const e=["subject:Architecture","subject:Art","subject:Biography&Autobiography","subject:Business","subject:Crafts&Hobbies","subject:Drama","subject:Fiction","subject:Cooking","subject:Health&Fitness","subject:History","subject:Humor","subject:Poetry","subject:Psychology","subject:Science","subject:Technology","subject:Travel"],o="AIzaSyDQNaxmJEUQ2_ySf9hL41JpK439DoaBxwY",n=document.querySelector(".main-content__book-catalog"),s=document.querySelectorAll(".main-content__navigation-list-item"),a=document.querySelector(".button_load-more-button"),i=document.querySelector(".header__shoping-cart-quantity"),c=document.querySelector(".header__shoping-cart-quantity-text");let r=[];null!=JSON.parse(localStorage.getItem("cashedCart"))&&(r=JSON.parse(localStorage.getItem("cashedCart")),c.innerText=r.length,i.classList.toggle("header__shoping-cart-quantity_disabled"));let l,u,d=[],m=[];function g(t){d=[],d=document.querySelectorAll(".button_buy-button");for(let e=t;e<d.length;e++)d[e].addEventListener("click",(()=>{var t;d[t=e].classList.contains("button_buy-button-active")?(d[t].classList.toggle("button_buy-button-active"),d[t].innerText="in the cart",r.push(m[t]),localStorage.setItem("cashedCart",JSON.stringify(r)),console.log(r),1==r.length&&i.classList.toggle("header__shoping-cart-quantity_disabled"),c.innerText=r.length):(d[t].classList.toggle("button_buy-button-active"),d[t].innerText="buy now",r=r.filter((e=>JSON.stringify(e)!==JSON.stringify(m[t]))),localStorage.setItem("cashedCart",JSON.stringify(r)),console.log(r),0==r.length&&i.classList.toggle("header__shoping-cart-quantity_disabled"),c.innerText=r.length)}))}async function b(t,e){let n=[];return await fetch(`https://www.googleapis.com/books/v1/volumes?q="${t}"&key=${o}&printType=books&startIndex=${e}&maxResults=6&langRestrict=en`).then((t=>t.json())).then((t=>{let e={};for(let o=0;o<6;o++){if(e={},null==t.items[o].volumeInfo.authors)e.author="no author";else if(t.items[o].volumeInfo.authors.length>1){let n=t.items[o].volumeInfo.authors.join(", ");e.author=n}else e.author=t.items[o].volumeInfo.authors[0];null==t.items[o].volumeInfo.imageLinks?e.cover=!1:e.cover=t.items[o].volumeInfo.imageLinks.thumbnail,e.title=t.items[o].volumeInfo.title,e.rating=t.items[o].volumeInfo.averageRating,null==t.items[o].volumeInfo.ratingsCount?e.reviews="No":e.reviews=t.items[o].volumeInfo.ratingsCount,e.description=t.items[o].volumeInfo.description,"NOT_FOR_SALE"==t.items[o].saleInfo.saleability?e.price="":"FREE"==t.items[o].saleInfo.saleability?e.price="free":e.price=`${t.items[o].saleInfo.retailPrice.amount} ₽`,n.push(e)}})).catch((t=>console.log("error",t))),n}async function p(e,o){u=0,l=o,n.replaceChildren(),m=[];let a=await b(e,u);document.querySelector(".main-content__navigation-list-item-active").classList.toggle("main-content__navigation-list-item-active"),s[o].classList.toggle("main-content__navigation-list-item-active");for(let e=0;e<6;e++)m.push(a[e]),t(a[e].author,a[e].cover,a[e].title,a[e].rating,a[e].reviews,a[e].description,a[e].price);g(u),h()}function h(){for(let t=0;t<m.length;t++)for(let e=0;e<r.length;e++)JSON.stringify(m[t])===JSON.stringify(r[e])&&(d[t].classList.toggle("button_buy-button-active"),d[t].innerText="in the cart")}for(let t=0;t<s.length;t++)s[t].addEventListener("click",(()=>{p(e[t],t)}));a.addEventListener("click",(()=>{!async function(){u+=6;let o=await b(e[l],u);for(let e=0;e<6;e++)m.push(o[e]),t(o[e].author,o[e].cover,o[e].title,o[e].rating,o[e].reviews,o[e].description,o[e].price);g(u),h()}(),a.style.marginTop+="1210px"})),p(e[0],0),h()},158:()=>{window.onscroll=function(){window.pageYOffset>e?t.classList.add("sticky"):t.classList.remove("sticky")};const t=document.querySelector(".header-container"),e=t.offsetTop},997:()=>{let t=document.querySelector(".slider-wrapper"),e=(document.querySelector(".svg-dot-1"),document.querySelector(".svg-dot-2"),document.querySelector(".svg-dot-3"),document.querySelectorAll(".slider-dots-item"));const o=[{img:"http://localhost:3000/6f345790f612312eca2e.jpg"},{img:"http://localhost:3000/037f848a9334184fbe61.jpg"},{img:"http://localhost:3000/cc7860b31a3ba793be84.jpg"}];let n=0;const s=e=>{t.style.backgroundImage=`url(${o[e].img})`};function a(t){e.forEach((t=>t.classList.remove("dot-active"))),e[t].classList.add("dot-active")}s(n),e.forEach(((t,e)=>{t.addEventListener("click",(()=>{n=e,s(n),a(n)}))})),setInterval((()=>{n==o.length-1?n=0:n++,s(n),a(n)}),5e3)}},e={};function o(n){var s=e[n];if(void 0!==s)return s.exports;var a=e[n]={exports:{}};return t[n](a,a.exports,o),a.exports}o.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return o.d(e,{a:e}),e},o.d=(t,e)=>{for(var n in e)o.o(e,n)&&!o.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:e[n]})},o.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),(()=>{"use strict";o(158),o(997),o(204)})()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 204:
+/***/ (() => {
+
+
+function createBook(author, cover, name, rating, reviewNum, description, price) {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("main-content__book-card");
+    const bookCover = document.createElement("img");
+    bookCover.classList.add("main-content__book-cover");
+    if (cover == false) {
+        bookCover.setAttribute("src", '/img/example-cover.png');
+    } else {
+        bookCover.setAttribute("src", cover);
+    }
+    bookCover.setAttribute("alt", "book cover");
+    const bookInfo = document.createElement("div");
+    bookInfo.classList.add("main-content__book-info");
+    const bookAuthor = document.createElement("p");
+    bookAuthor.classList.add("main-content__book-author");
+    bookAuthor.textContent = author;
+    const bookName = document.createElement("p");
+    bookName.classList.add("main-content__book-name");
+    bookName.textContent = name;
+    const bookRating = document.createElement("div");
+
+    if (rating != undefined) {
+
+        bookRating.classList.add("main-content__book-rating");
+        for (let i = 0; i < 5; i++) {
+            let starRating = Math.floor(rating);
+            let star = document.createElement("span");
+            star.classList.add("main-content__book-rating-star");
+            star.textContent = "★";
+            if (starRating - 1 >= i) {
+                star.classList.add("main-content__book-rating-star_active");
+            }
+            bookRating.append(star);
+        }
+        const bookReviews = document.createElement("span");
+        bookReviews.classList.add("main-content__book-reviews");
+        bookReviews.textContent = `${reviewNum} review`;
+        bookRating.append(bookReviews);
+    }
+
+    const bookDescription = document.createElement("p");
+    bookDescription.classList.add("main-content__book-description");
+    bookDescription.textContent = description;
+    const bookPrice = document.createElement("p");
+    bookPrice.classList.add("main-content__book-price");
+    bookPrice.textContent = price;
+    const buyButton = document.createElement("button");
+    buyButton.classList.add("button", "button_buy-button", "button_buy-button-active");
+    buyButton.textContent = "buy now";
+
+    bookInfo.append(bookAuthor, bookName, bookRating, bookDescription, bookPrice, buyButton);
+    bookCard.append(bookCover, bookInfo);
+    const mainContent = document.querySelector(".main-content__book-catalog");
+    mainContent.append(bookCard);
+}
+const BOOK_CATEGORIES = [
+    'subject:Architecture',
+    'subject:Art',
+    'subject:Biography&Autobiography',
+    'subject:Business',
+    'subject:Crafts&Hobbies',
+    'subject:Drama',
+    'subject:Fiction',
+    'subject:Cooking',
+    'subject:Health&Fitness',
+    'subject:History',
+    'subject:Humor',
+    'subject:Poetry',
+    'subject:Psychology',
+    'subject:Science',
+    'subject:Technology',
+    'subject:Travel'
+];
+const API_KEY = 'AIzaSyDQNaxmJEUQ2_ySf9hL41JpK439DoaBxwY';
+const BOOK_CATALOG = document.querySelector(".main-content__book-catalog");
+const CATEGORY_LI_ITEMS = document.querySelectorAll(".main-content__navigation-list-item");
+const BTN_MORE_BOOKS = document.querySelector('.button_load-more-button');
+const BOOK_COUNTER_EL = document.querySelector('.header__shoping-cart-quantity');
+const BOOK_COUNTER_TXT = document.querySelector('.header__shoping-cart-quantity-text');
+
+let booksInCart = [];
+if (JSON.parse(localStorage.getItem('cashedCart')) != null) {
+    booksInCart = JSON.parse(localStorage.getItem('cashedCart'));
+    BOOK_COUNTER_TXT.innerText = booksInCart.length;
+    BOOK_COUNTER_EL.classList.toggle('header__shoping-cart-quantity_disabled');
+}
+let buyButtons = [];
+let currectCat;
+let bookStartIndex;
+let booksOnPage = [];
+
+function addBookToCart(buttonIndex) {
+    if (buyButtons[buttonIndex].classList.contains('button_buy-button-active')) {
+        buyButtons[buttonIndex].classList.toggle('button_buy-button-active');
+        buyButtons[buttonIndex].innerText = 'in the cart';
+        booksInCart.push(booksOnPage[buttonIndex]);
+        localStorage.setItem('cashedCart', JSON.stringify(booksInCart));
+        console.log(booksInCart);
+        if (booksInCart.length == 1) {
+            BOOK_COUNTER_EL.classList.toggle('header__shoping-cart-quantity_disabled');
+        }
+        BOOK_COUNTER_TXT.innerText = booksInCart.length;
+    } else {
+        buyButtons[buttonIndex].classList.toggle('button_buy-button-active');
+        buyButtons[buttonIndex].innerText = 'buy now';
+        booksInCart = booksInCart.filter((book) => JSON.stringify(book) !== JSON.stringify(booksOnPage[buttonIndex]));
+        localStorage.setItem('cashedCart', JSON.stringify(booksInCart));
+        console.log(booksInCart);
+        if (booksInCart.length == 0) {
+            BOOK_COUNTER_EL.classList.toggle('header__shoping-cart-quantity_disabled');
+        }
+        BOOK_COUNTER_TXT.innerText = booksInCart.length;
+    }
+}
+
+function arrangeBuyButtons(buyButtonStartIndex) {
+    buyButtons = [];
+    buyButtons = document.querySelectorAll('.button_buy-button');
+    for (let i = buyButtonStartIndex; i < buyButtons.length; i++) {
+        buyButtons[i].addEventListener('click', () => addBookToCart(i));
+    }
+}
+
+async function getBookList(category, startIndex) {
+    let books = [];
+    await fetch(`https://www.googleapis.com/books/v1/volumes?q="${category}"&key=${API_KEY}&printType=books&startIndex=${startIndex}&maxResults=6&langRestrict=en`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            let book = {};
+            for (let i = 0; i < 6; i++) {
+                book = {};
+                if (data.items[i].volumeInfo.authors == undefined) {
+                    book.author = 'no author';
+                } else if (data.items[i].volumeInfo.authors.length > 1) {
+                    let authors = data.items[i].volumeInfo.authors.join(', ');
+                    book.author = authors;
+                } else {
+                    book.author = data.items[i].volumeInfo.authors[0];
+                }
+                if (data.items[i].volumeInfo.imageLinks == undefined) {
+                    book.cover = false;
+                } else {
+                    book.cover = data.items[i].volumeInfo.imageLinks.thumbnail;
+                }
+                book.title = data.items[i].volumeInfo.title;
+                book.rating = data.items[i].volumeInfo.averageRating;
+                if (data.items[i].volumeInfo.ratingsCount == undefined) {
+                    book.reviews = 'No';
+                } else {
+                    book.reviews = data.items[i].volumeInfo.ratingsCount;
+                }
+                book.description = data.items[i].volumeInfo.description;
+                if (data.items[i].saleInfo.saleability == "NOT_FOR_SALE") {
+                    book.price = '';
+                } else if (data.items[i].saleInfo.saleability == "FREE") {
+                    book.price = 'free';
+                } else {
+                    book.price = `${data.items[i].saleInfo.retailPrice.amount} ₽`;
+                }
+                books.push(book);
+            }
+        })
+        .catch(error => console.log("error",error));
+    return books;
+}
+
+async function createBooksOnPage(category, catNum) {
+    bookStartIndex = 0;
+    currectCat = catNum;
+    BOOK_CATALOG.replaceChildren();
+    booksOnPage = [];
+    let bookList = await getBookList(category, bookStartIndex);
+    let navActiveItem = document.querySelector(".main-content__navigation-list-item-active");
+    navActiveItem.classList.toggle('main-content__navigation-list-item-active');
+    CATEGORY_LI_ITEMS[catNum].classList.toggle('main-content__navigation-list-item-active');
+    for (let i = 0; i < 6; i++) {
+        booksOnPage.push(bookList[i]);
+        createBook(bookList[i].author, bookList[i].cover, bookList[i].title, bookList[i].rating, bookList[i].reviews, bookList[i].description, bookList[i].price);
+    }
+    arrangeBuyButtons(bookStartIndex);
+    checkBooksOnPage();
+}
+
+function checkBooksOnPage() {
+    for (let i = 0; i < booksOnPage.length; i++) {
+        for (let n = 0; n < booksInCart.length; n++) {
+            if (JSON.stringify(booksOnPage[i]) === JSON.stringify(booksInCart[n])) {
+                buyButtons[i].classList.toggle('button_buy-button-active');
+                buyButtons[i].innerText = 'in the cart';
+            }
+        }
+    }
+}
+
+for (let n = 0; n < CATEGORY_LI_ITEMS.length; n++) {
+    CATEGORY_LI_ITEMS[n].addEventListener('click', () => {
+        createBooksOnPage(BOOK_CATEGORIES[n], n);
+        // BTN_MORE_BOOKS.style.marginTop = '96px';
+    });
+}
+
+async function addMoreBooksOnPage() {
+    bookStartIndex = bookStartIndex + 6;
+    let bookList = await getBookList(BOOK_CATEGORIES[currectCat], bookStartIndex);
+    for (let i = 0; i < 6; i++) {
+        booksOnPage.push(bookList[i]);
+        createBook(bookList[i].author, bookList[i].cover, bookList[i].title, bookList[i].rating, bookList[i].reviews, bookList[i].description, bookList[i].price);
+    }
+    arrangeBuyButtons(bookStartIndex);
+    checkBooksOnPage();
+}
+
+BTN_MORE_BOOKS.addEventListener('click', () => {
+    addMoreBooksOnPage();
+    BTN_MORE_BOOKS.style.marginTop += '1210px';
+});
+
+createBooksOnPage(BOOK_CATEGORIES[0], 0);
+checkBooksOnPage();
+
+/***/ }),
+
+/***/ 158:
+/***/ (() => {
+
+window.onscroll = function () { myFunction() };
+const header = document.querySelector('.header-container');
+const sticky = header.offsetTop;
+function myFunction() {
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+};
+
+
+
+/***/ }),
+
+/***/ 997:
+/***/ (() => {
+
+
+let slider = document.querySelector('.slider-wrapper');
+let dot1 = document.querySelector('.svg-dot-1');
+let dot2 = document.querySelector('.svg-dot-2');
+let dot3 = document.querySelector('.svg-dot-3');
+let dots = document.querySelectorAll('.slider-dots-item');
+
+const entities = [
+    {
+        // img: './dist/6f345790f612312eca2e.jpg'
+        img: 'http://localhost:3000/6f345790f612312eca2e.jpg'
+    }, {
+        // img: './dist/037f848a9334184fbe61.jpg'
+        img: 'http://localhost:3000/037f848a9334184fbe61.jpg'
+    }, {
+        // img: './dist/cc7860b31a3ba793be84.jpg'
+        // img: 'assets\icons\banner3.jpg'
+        img: 'http://localhost:3000/cc7860b31a3ba793be84.jpg'
+    }
+];
+let currentIndex = 0;
+const setEntity = (index) => {
+    slider.style.backgroundImage = `url(${entities[index].img})`;
+};
+setEntity(currentIndex);
+
+function markDot(index) {
+    dots.forEach(a => a.classList.remove('dot-active'));
+    dots[index].classList.add('dot-active');
+};
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        setEntity(currentIndex);
+        markDot(currentIndex);
+    });
+});
+
+setInterval(() => {
+    if(currentIndex == entities.length-1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    }
+    setEntity(currentIndex);
+    markDot(currentIndex);
+},5000);
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/* harmony import */ var _assets_js_modules_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(158);
+/* harmony import */ var _assets_js_modules_header__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_js_modules_header__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _assets_js_modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(997);
+/* harmony import */ var _assets_js_modules_slider__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_js_modules_slider__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_js_modules_books_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(204);
+/* harmony import */ var _assets_js_modules_books_content__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_js_modules_books_content__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+
+
+})();
+
+/******/ })()
+;
